@@ -20,13 +20,15 @@ function Login()
 {
     var user = document.getElementById("inUsername").value;
     var pass = document.getElementById("inPassword").value;
-
+    var clientID = '659c279b-374a-e711-9ffa-4c72b9647535';
     jQuery.ajax({
-        url: 'http://localhost:55448/token',
+        url: 'http://foodak.net/token',
         type: 'POST',
-        data: { grant_type: 'password', username: user, password: pass },
-        beforeSend: function (xhr) {
-            //xhr.setRequestHeader("Authorization", "BEARER " + access_token);
+        data: {
+            grant_type: 'password',
+            username: user,
+            password: pass,
+            client_id: clientID
         },
         success: function (response) {
             document.cookie = "access_token=" + response.access_token;
